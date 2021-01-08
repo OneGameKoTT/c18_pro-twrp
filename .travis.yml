@@ -25,7 +25,7 @@ before_script:
   - wget -q ${TWRP_SOURCE}.ab -O $HOME/twrp.tar.xz.ab
   - wget -q ${TWRP_SOURCE}.ac -O $HOME/twrp.tar.xz.ac
   - wget -q ${TWRP_SOURCE}.ad -O $HOME/twrp.tar.xz.ad
-  - cat twrp.tar.gz.* | tar xvfz - --directory $HOME/twrp/
+  - cat twrp.tar.xz.* | tar -xJf - --directory $HOME/twrp/
   - rm twrp.tar.xz.*
 script:
   # Replace your $$USERNAME$$, $$REPO_URL$$, $$BRAND$$, $$DEVICE$$
