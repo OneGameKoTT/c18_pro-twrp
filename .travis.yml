@@ -26,14 +26,13 @@ before_script:
   - wget -q ${TWRP_SOURCE}.ad -O $HOME/twrp.tar.xz.ad
   - cat twrp.tar.xz.* | tar -xJf - --directory $HOME/twrp/
   - rm twrp.tar.xz.*
-  - ls $HOME && ls $HOME/twrp
 script:
   # Replace your $$USERNAME$$, $$REPO_URL$$, $$BRAND$$, $$DEVICE$$
   - cd $HOME/twrp/ && git clone https://github.com/OneGameKoTT/c18_pro-twrp.git device/OUKITEL/C18_Pro
   - rm -rf bootable/recovery && git clone https://github.com/omnirom/android_bootable_recovery -b android-9.0 --depth 1 bootable/recovery
   - |
-    docker run --rm -i -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) -v "$(pwd):/home/travis/twrp/:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw,z" fr3akyphantom/droid-builder bash << EOF
-    cd /home/travis/twrp/
+    docker run --rm -i -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) -v "${HOME}/twrp:/home/builder/twrp:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw,z" fr3akyphantom/droid-builder bash << EOF
+    cd /home/builder/twrp/
     source build/envsetup.sh
     # Choose build flavor as "eng" or "userdebug"
     BUILD_FLAVOR="eng"
