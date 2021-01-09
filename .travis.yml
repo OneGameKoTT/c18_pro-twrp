@@ -25,7 +25,10 @@ before_script:
   - TWRP_SOURCE3="https://github.com/PhantomZone54/twrp_sources_norepo/releases/download/v3.4.0-20201103/MinimalOmniRecovery-twrp-9.0-norepo-20201103.tzst.ac" 
   - TWRP_SOURCE4="https://github.com/PhantomZone54/twrp_sources_norepo/releases/download/v3.4.0-20201103/MinimalOmniRecovery-twrp-9.0-norepo-20201103.tzst.ad"
   # Then uncomment below lines to download & extract the multi-part files
-  - axel -q -n 4 "${TWRP_SOURCE1}" "${TWRP_SOURCE2}" "${TWRP_SOURCE3}" "${TWRP_SOURCE4}"
+  - axel -q "${TWRP_SOURCE1}"
+  - axel -q "${TWRP_SOURCE2}"
+  - axel -q "${TWRP_SOURCE3}" 
+  - axel -q "${TWRP_SOURCE4}"
   - cat MinimalOmniRecovery*.tzst.* | tar --zstd -xf - --directory $HOME/twrp/ && rm MinimalOmniRecovery*.tzst.*
 script:
   # Replace your ${_USERNAME_}, ${_REPO_SLUG_}, ${_VENDORNAME_}, ${_CODENAME_}
