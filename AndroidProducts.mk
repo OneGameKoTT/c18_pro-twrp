@@ -1,0 +1,3 @@
+LOCAL_PATH := device/OUKITEL/C18_Pro
+
+PRODUCT_MAKEFILES := $(LOCAL_PATH)/omni_C18_Pro.mk
