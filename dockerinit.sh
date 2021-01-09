@@ -7,7 +7,7 @@ docker run --privileged --rm -i \
   -v "$HOME/.ccache:/srv/ccache:rw" \
   fr3akyphantom/droid-builder \
   /bin/bash << EOF
-    cd $HOME/twrp
+    cd /home/builder/twrp
     mkdir out
     source build/envsetup.sh
     lunch omni_C18_Pro-eng
