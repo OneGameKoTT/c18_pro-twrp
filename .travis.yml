@@ -27,16 +27,7 @@ script:
   # Replace your ${_USERNAME_}, ${_REPO_SLUG_}, ${_VENDORNAME_}, ${_CODENAME_}
   - cd $HOME/twrp/ && git clone https://github.com/OneGameKoTT/c18_pro-twrp.git device/OUKITEL/C18_Pro
   - rm -rf bootable/recovery && git clone https://github.com/omnirom/android_bootable_recovery -b android-9.0 --depth 1 bootable/recovery
-  - |
-    docker run --rm -i -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) -v "$(pwd):/home/builder/twrp/:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw,z" fr3akyphantom/droid-builder bash << EOF
-    cd /home/builder/twrp/
-    source build/envsetup.sh
-    # Choose build flavor as "eng" or "userdebug"
-    BUILD_FLAVOR="eng"
-    lunch omni_C18_Pro-${BUILD_FLAVOR}
-    make -j$(nproc --all) recoveryimage
-    exit
-    EOF
+  - sh device/OUKITEL/C18_Pro/dockerinit.sh
 after_success:
   - export version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d '"' -f2)
   - cp $HOME/twrp/out/target/product/C18_Pro/recovery.img $HOME/twrp/TWRP-$version-C18_Pro-$(date +"%Y%m%d")-Unofficial.img
