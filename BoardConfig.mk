@@ -24,7 +24,8 @@ BOARD_USES_MMCUTILS := true
 BOARD_SUPPRESS_EMMC_WIPE := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 RECOVERY_SDCARD_ON_DATA := true               # Optional: If /sdcard partition is emulated on /data partition 
-
+TW_USE_TOOLBOX := true
+TW_NO_LEGACY_PROPS := true
 # TWRP stuff
 TW_EXCLUDE_SUPERSU := false                    # true/false: Add SuperSU or not
 TW_INCLUDE_CRYPTO := true                     # true/false: Add Data Encryption Support or not
@@ -36,13 +37,13 @@ TARGET_SCREEN_HEIGHT := 1600                    # The height
 TARGET_SCREEN_WIDTH := 720                      # The width
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 # Set the Brightness Control File Path below (as per your chip/device)
-TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
-TW_SECONDARY_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
-# Set the Path of Logical Units (LUNs) for Storage below (as per your chip/device)
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
-TW_MAX_BRIGHTNESS := 255
-TW_DEFAULT_BRIGHTNESS := 80                   # Set custom brightness, low is better
+# TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+# TW_SECONDARY_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
+# # Set the Path of Logical Units (LUNs) for Storage below (as per your chip/device)
+# TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
+# TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+# TW_MAX_BRIGHTNESS := 255
+# TW_DEFAULT_BRIGHTNESS := 80                   # Set custom brightness, low is better
 
 TW_INCLUDE_NTFS_3G := true                    # Include NTFS Filesystem Support
 TW_INCLUDE_FUSE_EXFAT := true                 # Include Fuse-ExFAT Filesystem Support
@@ -59,7 +60,7 @@ TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/prebuilt/zImage
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x11f88000 --tags_offset 0x12f88000
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x11f88000 --tags_offset 0x12f88000 --header_version 1
 
 # Set FSTAB
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/root/etc/recovery.fstab
@@ -69,7 +70,7 @@ TARGET_USES_64_BIT_BINDER := true             # Remove if the device is 32-bit
 
 # Architecture
 # According to the device's architecture (64-bit or 32-bit)
-ifeq ($(TARGET_IS_64_BIT),true)
+# ifeq ($(TARGET_IS_64_BIT),true)
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
@@ -83,11 +84,11 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_CPU_ABI_LIST_64_BIT := $(TARGET_CPU_ABI)
 TARGET_CPU_ABI_LIST_32_BIT := $(TARGET_2ND_CPU_ABI),$(TARGET_2ND_CPU_ABI2)
 TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI_LIST_64_BIT),$(TARGET_CPU_ABI_LIST_32_BIT)
-else
-TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_VARIANT := cortex-a7
-TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI),$(TARGET_CPU_ABI2)
-endif
+# else
+# TARGET_ARCH := arm
+# TARGET_ARCH_VARIANT := armv7-a-neon
+# TARGET_CPU_ABI := armeabi-v7a
+# TARGET_CPU_ABI2 := armeabi
+# TARGET_CPU_VARIANT := cortex-a7
+# TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI),$(TARGET_CPU_ABI2)
+# endif

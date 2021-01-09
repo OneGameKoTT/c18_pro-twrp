@@ -1,7 +1,6 @@
-ifneq ($(filter C18_Pro,$(TARGET_DEVICE)),)
+LOCAL_PATH := $(call my-dir)
 
-LOCAL_PATH := device/OUKITEL/C18_Pro
-
+ifeq ($(TARGET_DEVICE),C18_Pro)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
 endif
