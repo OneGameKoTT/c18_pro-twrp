@@ -1,4 +1,3 @@
-
 ifneq ($(filter C18_Pro,$(TARGET_DEVICE)),)
 
 LOCAL_PATH := device/OUKITEL/C18_Pro
