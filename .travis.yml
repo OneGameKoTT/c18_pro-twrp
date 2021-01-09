@@ -35,7 +35,7 @@ script:
   - cd $HOME/twrp/ && git clone https://github.com/OneGameKoTT/c18_pro-twrp.git device/OUKITEL/C18_Pro
   - rm -rf bootable/recovery && git clone https://github.com/omnirom/android_bootable_recovery -b android-9.0 --depth 1 bootable/recovery
   - |
-    docker run --rm -i -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) -v "$(pwd):/home/builder/twrp/:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw,z" fr3akyphantom/droid-builder /bin/bash << EOF
+    docker run --rm -i -e USER_ID=1000 -e GROUP_ID=1000 -v "$(pwd):/home/builder/twrp/:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw,z" fr3akyphantom/droid-builder /bin/bash << EOF
     cd /home/builder/twrp/
     export ALLOW_MISSING_DEPENDENCIES=true
     source build/envsetup.sh
