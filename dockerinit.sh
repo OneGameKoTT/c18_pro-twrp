@@ -4,7 +4,7 @@ docker run --privileged --rm -i \
   -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) \
   -v "$(pwd):/home/builder/twrp:rw,z" \
   -v "$HOME/.ccache:/srv/ccache:rw" \
-  fr3akyphantom/droid-builder:${TAG} \
+  fr3akyphantom/droid-builder \
   /bin/bash << EOF
     cd /home/builder/twrp/
     ls -la ./
