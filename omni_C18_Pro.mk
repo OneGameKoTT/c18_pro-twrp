@@ -15,7 +15,7 @@ $(call inherit-product, vendor/omni/config/common.mk)
 # Replace OUKITEL with your Brand's / Manufacturer's Value.
 PRODUCT_COPY_FILES += device/OUKITEL/C18_Pro/prebuilt/zImage:kernel
 # Fles under $(LOCAL_PATH)/recovery/root/ gets automatically copied into recovery
-# PRODUCT_COPY_FILES += $(LOCAL_PATH)/recovery/root/*:root/*
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/root/*:root/*
 
 PRODUCT_DEVICE := C18_Pro
 PRODUCT_NAME := omni_C18_Pro
