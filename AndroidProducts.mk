@@ -1,1 +1,3 @@
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/omni_C18_Pro.mk
+
+PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/omni_C18_Pro.mk
