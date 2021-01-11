@@ -1,4 +1,4 @@
 # Try to make twrp for OUKITEL C18 Pro
 
-Build: ![Success](https://www.svgrepo.com/show/111210/success.svg =32x32)
-Download: [![Download](https://www.svgrepo.com/show/243832/download.svg =32x32)](https://github.com/OneGameKoTT/c18_pro-twrp/releases/)
+Build: <img src="https://www.svgrepo.com/show/111210/success.svg" width="32" alt="Success">
+Download: [<img src="https://www.svgrepo.com/show/243832/download.svg" width="32" alt="Releases">](https://github.com/OneGameKoTT/c18_pro-twrp/releases/)
